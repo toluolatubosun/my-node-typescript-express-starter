@@ -16,6 +16,6 @@ const trimIncomingRequests = (req: Request, res: Response, next: NextFunction) =
     }
 
     next();
-}
+};
 
 export default trimIncomingRequests;

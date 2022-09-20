@@ -10,7 +10,7 @@ import type { Request, Response, NextFunction } from "express";
  *
  * @param  {any[]} roles List of roles allowed to access the route
  */
-const auth = (roles: any[] = []) => {
+const auth = (roles: string[] = []) => {
     roles = roles.length > 0 ? roles : ROLE.USER;
 
     return async (req: Request, res: Response, next: NextFunction) => {
@@ -18,7 +18,7 @@ const auth = (roles: any[] = []) => {
 
         const token = req.headers.authorization.split(" ")[1];
         const decoded = JWT.verify(token, JWT_SECRET) as JWTPayload;
-        
+
         const user = await User.findOne({ _id: decoded.id });
 
         if (!user) throw new CustomError("unauthorized access: User does not exist", 401);
@@ -30,6 +30,6 @@ const auth = (roles: any[] = []) => {
 
         next();
     };
-}
+};
 
 export default auth;

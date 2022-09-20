@@ -13,7 +13,7 @@ const addPathToBody = async (req: Request, res: Response, next: NextFunction) =>
     }
 
     next();
-}
+};
 
 export default {
     single: (field: string) => {

@@ -40,7 +40,8 @@ router.post("/multiple-upload", upload.multiple("images", 2), (req, res) => {
   // req.body.images: string[] - will hold the text fields, where the files were uploaded on the server
 });
 ```
-- There is a cleanup utility function to delete files in `utils/delete-files.ts`
+
+-   There is a cleanup utility function to delete files in `utils/delete-files.ts`
 
 ### Multer + Cloudinary
 
