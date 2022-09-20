@@ -1,0 +1,15 @@
+.DS_Store
+node_modules
+
+.env
+build
+dist
+
+uploads/*
+
+postman_collection.json
+
+yarn.lock
+package-lock.json
+
+.vscode

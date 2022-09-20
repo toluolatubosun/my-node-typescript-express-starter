@@ -1,0 +1,16 @@
+.DS_Store
+node_modules
+
+# production files
+.env
+build
+dist
+
+# exclude files in uploads
+uploads/*
+!uploads/.gitkeep
+
+# use yarn :)
+package-lock.json
+
+.vscode
