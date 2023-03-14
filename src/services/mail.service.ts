@@ -33,7 +33,7 @@ class MailService {
         } as any);
 
         const result = await transporter.sendMail({
-            from: `${APP_NAME} <noreply${MAILER.DOMAIN}>`,
+            from: `${APP_NAME} <${MAILER.USER}>`,
             to: Array.isArray(recipient) ? recipient.join() : recipient,
             subject,
             text: content
