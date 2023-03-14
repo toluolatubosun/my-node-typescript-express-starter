@@ -23,7 +23,7 @@ import { PORT } from "./config";
 
 // Listen to server port
 httpServer.listen(PORT, async () => {
-    console.log(`:::> Server listening on port ${PORT} @ http://localhost:${PORT}`);
+    console.log(`:::> 🚀 Server ready at http://localhost:${PORT}`);
 });
 
 // On server error

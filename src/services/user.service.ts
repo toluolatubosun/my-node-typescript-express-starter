@@ -7,7 +7,7 @@ import type { UploadApiResponse } from "cloudinary";
 class UserService {
     async create(data: UserDataInput) {
         if (data.image) {
-            data.image = await this.uploadImage(data.image);
+            data.image = ((await CloudinaryUtil.uploadBase64(data.image, "users")) as UploadApiResponse).secure_url;
         }
 
         return await new User(data).save();
@@ -57,13 +57,9 @@ class UserService {
         return user;
     }
 
-    async update(userId: string, data: UserDataInput, access = "user") {
-        if (access !== "admin") {
-            delete data.role, data.email, data.password;
-        }
-
+    async update(userId: string, data: UserUpdateInput) {
         if (data.image) {
-            data.image = await this.uploadImage(data.image);
+            data.image = ((await CloudinaryUtil.uploadBase64(data.image, "users")) as UploadApiResponse).secure_url;
             await this.deleteUserImage(userId); // Delete the old image
         }
 
@@ -88,11 +84,6 @@ class UserService {
         if (!user.image) return true;
 
         return await CloudinaryUtil.delete(user.image);
-    }
-
-    /** Helper function */
-    async uploadImage(image: string) {
-        return ((await CloudinaryUtil.uploadBase64(image, "users")) as UploadApiResponse).secure_url;
     }
 }
 
