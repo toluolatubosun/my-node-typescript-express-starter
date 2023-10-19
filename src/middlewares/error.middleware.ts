@@ -1,7 +1,7 @@
 import response from "./../utils/response";
 
 // Possible error names
-const errorNames = ["CastError", "JsonWebTokenError", "ValidationError", "SyntaxError", "MongooseError", "MongoError"];
+const errorNames = ["CastError", "JsonWebTokenError", "ValidationError", "SyntaxError", "MongooseError", "MongoError","TokenExpiredError"];
 
 import type { Application, Request, Response, NextFunction } from "express";
 
